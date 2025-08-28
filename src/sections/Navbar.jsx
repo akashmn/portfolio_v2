@@ -22,7 +22,10 @@ const Navbar = () => {
                     </a>
 
                     {/*menu icon*/}
-                    <button onClick={toggleMenu}>
+                    <button
+                        className="text-neutral-400 hover:text-white transition-colors focus:outline-none sm:hidden flex"
+                        aria-label="Toggle Menu"
+                        onClick={toggleMenu}>
                         <img src={!isOpen? "/assets/menu.svg": "/assets/close.svg"} alt="menu"  className="w-6 h-6"/>
                     </button>
                 </div>
