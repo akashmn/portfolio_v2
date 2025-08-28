@@ -4,9 +4,12 @@ import {PerspectiveCamera} from "@react-three/drei";
 import HackerRoom from "../components/HackerRoom.jsx";
 import CanvasLoader from "../components/CanvasLoader.jsx";
 import {Leva, useControls} from "leva";
+import {useMediaQuery} from "react-responsive";
+import {calculateSizes} from "../constants/index.js";
 
 const Hero = () => {
 
+    // Leva controls for debugging and adjusting the 3D model's position, rotation, and scale
     const x = useControls('HackerRoom', {
         positionX: {value: 0, min: -10, max: 10, step: 0.01},
         positionY: {value: 0, min: -10, max: 10, step: 0.01},
@@ -16,6 +19,13 @@ const Hero = () => {
         rotationZ: {value: 0, min: -Math.PI, max: Math.PI, step: 0.01},
         scale: {value: 0, min: 0, max: 100, step: 0.01},
     })
+
+    //media query for responsiveness
+    const isSmallMobile = useMediaQuery({query: '(max-width: 480px)'})
+    const isMobile = useMediaQuery({query: '(max-width: 768px)'})
+    const isTablet = useMediaQuery({query: '(min-width: 768, max-width: 1024px)'})
+
+    const sizes = calculateSizes(isSmallMobile, isMobile, isTablet)
 
     return (
         <section className='min-h-screen w-full flex flex-col relative'>
@@ -34,14 +44,14 @@ const Hero = () => {
                 <Leva />
                 <Canvas className='h-full w-full'>
                     <Suspense fallback={<CanvasLoader />}>
-                        <PerspectiveCamera makeDefault position={[0, 0, 30]} />
+                        <PerspectiveCamera makeDefault position={[0, 0, 15]} />
                         <HackerRoom
-                            // scale={0.1}
-                            // position={[0,0,0]}
-                            // rotation={[0, 280, 0]}
-                            position={[x.positionX, x.positionY, x.positionZ]}
-                            rotation={[x.rotationX, x.rotationY, x.rotationZ]}
-                            scale={[x.scale, x.scale, x.scale]}
+                            scale={sizes.deskScale}
+                            position={sizes.deskPosition}
+                            rotation={[0, -Math.PI, 0]}
+                            // position={[x.positionX, x.positionY, x.positionZ]}
+                            // rotation={[x.rotationX, x.rotationY, x.rotationZ]}
+                            // scale={[x.scale, x.scale, x.scale]}
                         />
                         <ambientLight intensity={1} />
                         <directionalLight position={[10, 10, 10]} intensity={1} />
