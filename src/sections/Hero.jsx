@@ -3,8 +3,20 @@ import {Canvas} from "@react-three/fiber";
 import {PerspectiveCamera} from "@react-three/drei";
 import HackerRoom from "../components/HackerRoom.jsx";
 import CanvasLoader from "../components/CanvasLoader.jsx";
+import {Leva, useControls} from "leva";
 
 const Hero = () => {
+
+    const x = useControls('HackerRoom', {
+        positionX: {value: 0, min: -10, max: 10, step: 0.01},
+        positionY: {value: 0, min: -10, max: 10, step: 0.01},
+        positionZ: {value: 0, min: -10, max: 10, step: 0.01},
+        rotationX: {value: 0, min: -Math.PI, max: Math.PI, step: 0.01},
+        rotationY: {value: Math.PI * 2, min: -Math.PI, max: Math.PI, step: 0.01},
+        rotationZ: {value: 0, min: -Math.PI, max: Math.PI, step: 0.01},
+        scale: {value: 0, min: 0, max: 100, step: 0.01},
+    })
+
     return (
         <section className='min-h-screen w-full flex flex-col relative'>
             {/*hero section texts*/}
@@ -19,10 +31,18 @@ const Hero = () => {
 
             {/*hero section 3js models*/}
             <div className='w-full h-full absolute inset-8'>
+                <Leva />
                 <Canvas className='h-full w-full'>
                     <Suspense fallback={<CanvasLoader />}>
                         <PerspectiveCamera makeDefault position={[0, 0, 30]} />
-                        <HackerRoom scale={0.07} position={[0,0,0]} rotation={[0, 280, 0]}/>
+                        <HackerRoom
+                            // scale={0.1}
+                            // position={[0,0,0]}
+                            // rotation={[0, 280, 0]}
+                            position={[x.positionX, x.positionY, x.positionZ]}
+                            rotation={[x.rotationX, x.rotationY, x.rotationZ]}
+                            scale={[x.scale, x.scale, x.scale]}
+                        />
                         <ambientLight intensity={1} />
                         <directionalLight position={[10, 10, 10]} intensity={1} />
                     </Suspense>
