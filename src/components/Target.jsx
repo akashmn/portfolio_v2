@@ -20,6 +20,7 @@ const Target = (props) => {
     return (
         <mesh {...props} ref={targetRef}>
             <primitive
+                scale={1.3}
                 object={scene}
             />
         </mesh>
