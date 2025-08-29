@@ -3,9 +3,10 @@ import {Canvas} from "@react-three/fiber";
 import {PerspectiveCamera} from "@react-three/drei";
 import HackerRoom from "../components/HackerRoom.jsx";
 import CanvasLoader from "../components/CanvasLoader.jsx";
-import {Leva, useControls} from "leva";
+// import {Leva, useControls} from "leva";
 import {useMediaQuery} from "react-responsive";
 import {calculateSizes} from "../constants/index.js";
+import Target from "../components/Target.jsx";
 
 const Hero = () => {
 
@@ -40,7 +41,7 @@ const Hero = () => {
             </div>
 
             {/*hero section 3js models*/}
-            <div className='w-full h-full absolute inset-8'>
+            <div className='w-full h-full absolute inset-0'>
                 {/*<Leva />*/}
                 <Canvas className='h-full w-full'>
                     <Suspense fallback={<CanvasLoader />}>
@@ -53,6 +54,10 @@ const Hero = () => {
                             // rotation={[x.rotationX, x.rotationY, x.rotationZ]}
                             // scale={[x.scale, x.scale, x.scale]}
                         />
+                        <group>
+                            <Target position={sizes.targetPosition} />
+                        </group>
+
                         <ambientLight intensity={1} />
                         <directionalLight position={[10, 10, 10]} intensity={1} />
                     </Suspense>
