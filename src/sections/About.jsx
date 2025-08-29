@@ -22,7 +22,7 @@ const About = () => {
                 {/*Hi, im akash M Nandan*/}
                 <div className="col-span-1 xl:row-span-3">
                     <div className="grid-container">
-                        <img src="assets/grid1.png" alt="grid-1" className="w-full sm:h-[276px] h-fit object-contain" />
+                        <img src="/assets/grid1.png" alt="grid-1" className="w-full sm:h-[276px] h-fit object-contain" />
 
                         <div>
                             <p className="grid-headtext">Hi, I’m Akash M Nandan</p>
@@ -36,7 +36,7 @@ const About = () => {
                 {/*Tech stacks*/}
                 <div className="col-span-1 xl:row-span-3">
                     <div className="grid-container">
-                        <img src="assets/grid2.png" alt="grid-2" className="w-full sm:h-[276px] h-fit object-contain" />
+                        <img src="/assets/grid2.png" alt="grid-2" className="w-full sm:h-[276px] h-fit object-contain" />
 
                         <div>
                             <p className="grid-headtext">Tech Stack</p>
@@ -83,7 +83,7 @@ const About = () => {
                 {/*Trying to make money with coding...*/}
                 <div className="xl:col-span-2 xl:row-span-3">
                     <div className="grid-container">
-                        <img src="assets/grid3.png" alt="grid-3" className="w-full sm:h-[266px] h-fit object-contain" />
+                        <img src="/assets/grid3.png" alt="grid-3" className="w-full sm:h-[266px] h-fit object-contain" />
 
                         <div>
                             <p className="grid-headtext"> Trying to make my <span className="text-green-500">first million</span> with coding....</p>
@@ -98,7 +98,7 @@ const About = () => {
                 <div className="xl:col-span-1 xl:row-span-2">
                     <div className="grid-container">
                         <img
-                            src="assets/grid4.png"
+                            src="/assets/grid4.png"
                             alt="grid-4"
                             className="w-full md:h-[126px] sm:h-[276px] h-fit object-cover sm:object-top"
                         />
