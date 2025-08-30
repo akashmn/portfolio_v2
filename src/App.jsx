@@ -12,7 +12,7 @@ const App = () => {
             <Hero />
             <About />
             <Projects />
-            <Clients />
+            {/*/!*<Clients />*! Currently commented out*/}
         </div>
     )
 }
